@@ -20,6 +20,9 @@ pragma solidity ^0.7.4;
  *      01000011 01101111 01110110 01101001 01000011 01101111 01101001 01101110  00101101  01000011 01010110 01000011                                              
  *      01000100 01100101 01110110 01100101 01101100 01101111 01110000 01100101 01100100  01000010 01111001  01000100 01100001 01101110 01110101 01110011 01101000 
  * 
+ *      https://cashflix.org - Pay Directly with your Crypto Wallet in Physical & Online Stores, 
+ *                                                                               using any of your Crypto Assets
+ * 
  */
 
 /**
@@ -441,8 +444,8 @@ contract CashFlix is IBEP20, Auth {
     uint256 feeDenominator = 10000;
 
     address public autoLiquidityReceiver;
-    address public _marketingWallet = 0x20371ab9dD19495553B536825577982bf031B8a9;
-    address public _rndWallet = 0xA2650030EC5A0e69d857f69E4aF63bF2e1E9eA00;
+    address public marketingFeeReceiver = 0x20371ab9dD19495553B536825577982bf031B8a9;
+    address public rndFeeReceiver = 0xA2650030EC5A0e69d857f69E4aF63bF2e1E9eA00;
     uint256 marketingFees;
     uint256 rndFees;
     
@@ -649,10 +652,10 @@ contract CashFlix is IBEP20, Auth {
 
             try distributor.deposit{value: amountBNBReflection}() {} catch {}
 
-            (bool success, ) = payable(_marketingWallet).call{value: amountBNBMarketing, gas: 30000}("");
+            (bool success, ) = payable(marketingFeeReceiver).call{value: amountBNBMarketing, gas: 30000}("");
             if(success){ marketingFees = marketingFees.add(amountBNBMarketing); }
 
-            (success, ) = payable(_rndWallet).call{value: amountBNBRnD, gas: 30000}("");
+            (success, ) = payable(rndFeeReceiver).call{value: amountBNBRnD, gas: 30000}("");
             if(success){ rndFees = rndFees.add(amountBNBRnD); }
 
             emit SwapBack(amountToSwap, amountBNB);
@@ -773,11 +776,11 @@ contract CashFlix is IBEP20, Auth {
         emit FeesUpdated(_enabled, _liquidityFee, _buybackFee, _reflectionFee, _marketingFee, _rndFee, _feeDenominator);
     }
 
-    function setFeeReceivers(address liquidityReceiver, address marketingWallet, address rndWallet) external authorized {
-        autoLiquidityReceiver = liquidityReceiver;
-        _marketingWallet = marketingWallet;
-        _rndWallet = rndWallet;
-        emit FeeReceiversUpdated(liquidityReceiver, marketingWallet, rndWallet);
+    function setFeeReceivers(address _liquidityReceiver, address _marketingFeeReceiver, address _rndFeeReceiver) external authorized {
+        autoLiquidityReceiver = _liquidityReceiver;
+        marketingFeeReceiver = _marketingFeeReceiver;
+        rndFeeReceiver = _rndFeeReceiver;
+        emit FeeReceiversUpdated(_liquidityReceiver, _marketingFeeReceiver, _rndFeeReceiver);
     }
 
     function setSwapBackSettings(bool _enabled, uint256 _amount) external authorized {
@@ -854,7 +857,7 @@ contract CashFlix is IBEP20, Auth {
     event FeeExemptUpdated(address holder, bool exempt);
     event TxLimitExemptUpdated(address holder, bool exempt);
     event FeesUpdated(bool enabled, uint256 liquidityFee, uint256 buybackFee, uint256 reflectionFee, uint256 marketingFee, uint256 rndFee, uint256 feeDenominator);
-    event FeeReceiversUpdated(address autoLiquidityReceiver, address _marketingWallet, address _rndWallet);
+    event FeeReceiversUpdated(address autoLiquidityReceiver, address marketingFeeReceiver, address rndFeeReceiver);
     event SwapBackSettingsUpdated(bool enabled, uint256 amount);
     event AutoLiquifyUpdated(bool enabled);
     event DistributorSettingsUpdated(uint256 gas, bool autoClaim);
