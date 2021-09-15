@@ -420,7 +420,7 @@ contract CashFlix is IBEP20, Auth {
     string constant _symbol = "$flix";
     uint8 constant _decimals = 18;
 
-    uint256 _totalSupply = 888888888888888 * (10 ** _decimals); // 888,888,888,888,888 $flix Tokens
+    uint256 _totalSupply = 88888888 * (10 ** _decimals); // 88,888,888 $flix Tokens
     uint256 public _maxTxAmount = _totalSupply / 1000; // 0.1%
 
     mapping (address => uint256) _balances;
