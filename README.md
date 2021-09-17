@@ -1,5 +1,6 @@
 
-![Logo](https://cashflix.org/CashFlixLogo.png)
+
+![Logo](https://cashflix.org/CashflixLogo.png)
 
     
 # CashFlix - $flix
@@ -62,3 +63,4 @@ Please join us get the latest updates,
 
 For support, email hello@cashflix.org or join our Telegram group.
 
+  
