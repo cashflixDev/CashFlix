@@ -1,3 +1,7 @@
+
+![Logo](https://cashflix.org/CashFlixLogo.png)
+
+    
 # CashFlix - $flix
 
 CashFlix is a Crypto Payment Aggregator to enable all token usage beyond any borders and limitations. The Cashflix Payment Engine will simplify the usage of your crypto wallet in the real world. At the moment one has to cash out their cryptocurrencies to their local bank accounts when one plans to use the money for a transaction. This process takes time and also fees are involved with doing so. Cashflix Swap and Switch Engine (S&S) enables straight transactions from your crypto wallet straight to the payment gateway system with highly reduced transactional fees.
@@ -47,4 +51,14 @@ Please join us get the latest updates,
 [Twitter](https://twitter.com/cash_flix)
 
 [BSCScan](https://bscscan.com/token/0xd0d7e0498b231bb5df030ea8254b4e9086b2f554)
+
+  
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+  
+## Support
+
+For support, email hello@cashflix.org or join our Telegram group.
 
