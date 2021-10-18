@@ -23,8 +23,7 @@ Passive Income Generation - Earn additional income in BUSD by holding $flix by o
 - Total Supply: 88,888,888 $flix
 - Decimals: 18
 - 5% Reward in BUSD among existing $flix holders/ Transaction, Enabling passive income for the existing users
-- 4% as Marketing/ Transaction
-- 2% as R & D/ Transaction
+- 6% as R & D/ Transaction
 - 2% as Auto-Buyback/ Transaction
 - 2% as Liquidity fee/ Transaction
 - No Team reserved tokens
